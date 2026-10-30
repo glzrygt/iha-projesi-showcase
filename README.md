@@ -1,27 +1,85 @@
-**UAV Flight Data Analysis and Interactive WebGIS Dashboard**
-This project was developed to analyze flight logs (telemetry) and aerial photographs obtained after UAV photogrammetric flight missions in an interactive WebGIS environment.
+# UAV Flight Data Analysis & Interactive WebGIS Dashboard
 
-The project transforms standard datasets from static tables into a dynamic decision support dashboard that provides a timeline-based flight simulation, real-time orientation angles, and spatial data visualization.
+An interactive, web-based geospatial decision support dashboard designed to analyze, visualize, and simulate UAV flight telemetry and photogrammetric survey missions. 
 
-* **Interactive Flight Path:** The UAV's mission route is plotted on the map using GPS coordinates (Latitude/Longitude) and enhanced with directional arrows.
-* **Flight Simulation:** The flight moment is simulated on the map using time-series data, offering real-time playback with a custom-designed media player.
-* **Telemetry and Exposure Analysis** Each photo point on the map is clickable. Pop-up windows display the following for that specific frame:
-  * Original aerial photo preview
-  * Shooting altitude (Height)
-  * Orientation angles (Roll, Pitch, Yaw)
-* **Customized UI/UX:** The default interface of the Folium library has been completely customized using Jinja2 and CSS to create a professional, dark-mode mission control panel (Dashboard).
-* **Spatial Awareness (Mini Map):** A small-scale overview map is integrated to ensure spatial context is maintained during detailed inspections.
+This project transforms raw flight logs (GPS/IMU) and sequential aerial exposures into an intuitive mission control platform, featuring real-time flight playback, orientation angles, dynamic telemetry popups, and photogrammetric footprint overlaps.
 
-## Technologies Used
+---
 
-* **Python 3.x:** Data processing and map generation logic.
-* **Pandas:** Cleaning, sorting, and statistical analysis of flight logs (CSV/TXT).
-* **Folium & Leaflet.js:** Web-based mapping infrastructure, layer management, and plugin integration.
-* **HTML5 & CSS3:** Mission panel (Dashboard) and interactive pop-up designs.
+## Interface & Key Features
+
+### Flight Trajectory & Photogrammetric Overlap (Footprints)
+Plots the complete mission route with directional markers, capture points, and computed ground footprint polygons to inspect coverage and forward/side overlaps.
+
+<p align="center">
+  <img src="assets/flight-path.jpg" alt="Flight Path and Exposure Points" width="48%">
+  <img src="assets/footprints-overlap.jpg" alt="Photogrammetric Overlap and Footprints" width="48%">
+</p>
+
+- **Mission Waypoints:** Interactive vector path highlighting exposure locations, capture order, and heading direction.
+- **Footprint Coverage:** Bounding polygon layers displaying the spatial coverage and overlap of each aerial photo frame.
+
+---
+
+### Telemetry Inspection & Mission Summary
+Clicking on any exposure point triggers detailed telemetry inspection cards alongside overall mission statistics.
+
+<p align="center">
+  <img src="assets/popup-trigger.png" alt="Exposure Node Selection" width="28%">
+  <img src="assets/telemetry-card.png" alt="Telemetry Data and Image Preview" width="38%">
+  <img src="assets/mission-summary.png" alt="Flight Summary Card" width="30%">
+</p>
+
+- **Exposure Popups:** Real-time access to camera altitude, GPS coordinates, spatial orientation parameters (**Roll, Pitch, Yaw**), and high-resolution aerial photo previews.
+- **Flight Summary HUD:** Live dashboard panel reporting total exposure count, average flight altitude, altitude ranges, and flight model classification.
+
+---
+
+### Timeline Simulation & Spatial GIS Controls
+Interactive playback controls simulate the flight mission along with full GIS navigation utilities.
+
+<p align="center">
+  <img src="assets/timeline-player.png" alt="Flight Timeline Player" width="95%">
+</p>
+
+<p align="center">
+  <img src="assets/gis-toolbar.png" alt="Measurement and Drawing Tools" width="16%">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/layer-control.png" alt="Layer and Export Control" width="18%">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="assets/mini-map.png" alt="Mini Map Overview" width="28%">
+</p>
+
+- **Timeline Media Player:** Play, pause, scrub, and adjust playback speed (fps) to replay the mission trajectory chronologically.
+- **GIS Measurement & Vector Tools:** On-screen distance, area measurement, and vector geometry annotation tools.
+- **Layer & Overview Controls:** Toggleable layer manager, spatial data export option, and synchronized overview mini-map.
+
+---
+
+## Tech Stack & Architecture
+
+- **Python 3.x:** Core backend pipeline for flight log ingestion, spatial coordinate transformation, and map compilation.
+- **Pandas:** Tabular data processing, timestamp sorting, and statistical telemetry evaluation.
+- **Folium & Leaflet.js:** Dynamic tile rendering, custom layer control, vector styling, and GIS plugin integration.
+- **HTML5 / CSS3 / Jinja2:** Fully custom dark-mode mission dashboard HUD, custom control widgets, and modal popups overriding default Leaflet UI.
+
+---
+
 ## Dataset
-The dataset belongs to a photogrammetric grid flight conducted at the Hacettepe University Beytepe Campus. It includes GPS (X, Y, Z) and IMU (Omega, Phi, Kappa / Roll, Pitch, Yaw) data for each photograph.
 
-## How to Run?
-Clone the repository to your local machine:
-   ```bash
-   git clone [https://github.com/glzrygt/iha-webgis-dashboard.git](https://github.com/glzrygt/iha-webgis-dashboard.git)
+The demonstration dataset is derived from a photogrammetric grid flight executed over the **Hacettepe University Beytepe Campus**.
+- **Spatial Positioning:** Synchronized GNSS recordings ($X, Y, Z$ / Latitude, Longitude, Ellipsoidal Height).
+- **Attitude / IMU Telemetry:** Angular orientation logs ($\omega, \phi, \kappa$ mapped to Roll, Pitch, Yaw).
+- **Sensor:** Calibrated onboard camera exposures matching flight timestamp logs.
+
+---
+
+## Getting Started
+
+### Clone the Showcase Repository
+```bash
+git clone [https://github.com/glzrygt/iha-webgis-dashboard.git](https://github.com/glzrygt/iha-webgis-dashboard.git)
+cd iha-webgis-dashboard
+
+### Author
+Developed by Gülüzar Yiğit
