@@ -12,8 +12,8 @@ This project transforms raw flight logs (GPS/IMU) and sequential aerial exposure
 Plots the complete mission route with directional markers, capture points, and computed ground footprint polygons to inspect coverage and forward/side overlaps.
 
 <p align="center">
-  <img src="assets/flight-path.jpg" alt="Flight Path and Exposure Points" width="48%">
-  <img src="assets/footprints-overlap.jpg" alt="Photogrammetric Overlap and Footprints" width="48%">
+  <img src="assets/flight-path.png" alt="Flight Path and Exposure Points" width="48%">
+  <img src="assets/footprints-overlap.png" alt="Photogrammetric Overlap and Footprints" width="48%">
 </p>
 
 - **Mission Waypoints:** Interactive vector path highlighting exposure locations, capture order, and heading direction.
